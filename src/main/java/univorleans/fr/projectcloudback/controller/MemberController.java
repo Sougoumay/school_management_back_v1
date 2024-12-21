@@ -4,22 +4,24 @@ package univorleans.fr.projectcloudback.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import univorleans.fr.projectcloudback.model.Member;
 
 import java.util.*;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("*")
 public class MemberController {
 
     private List<Member> students = new ArrayList<>();
     private List<Member> teachers = new ArrayList<>();
     private HashMap<String, List<Member>> membersMap = new HashMap<>();
 
+    //@GetMapping("/hello")
+    //public String hello() {
+    //    return "Hello World";
+    //}
 
     @GetMapping("/members")
     public ResponseEntity<List<?>> getMembers(@RequestParam String type) {
@@ -31,7 +33,7 @@ public class MemberController {
         membersMap.put("student", students);
         membersMap.put("teacher", teachers);
 
-        if (type == null) {
+        if (type == null || type.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
@@ -49,7 +51,7 @@ public class MemberController {
         String[] lastNames = {"Durand", "Dupont", "Martin", "Bernard", "Thomas", "Petit", "Lemoine", "Lemoine", "Richard", "Faure"};
         String[] firstNames = {"Alice", "Pierre", "Julien", "Marie", "Sophie", "Paul", "Luc", "Claire", "Antoine", "Caroline"};
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             String lastName = lastNames[rand.nextInt(lastNames.length)];
             String firstName = firstNames[rand.nextInt(firstNames.length)];
             String email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@etu.univ-orleans.fr";
@@ -67,7 +69,7 @@ public class MemberController {
         String[] lastNames = {"Lemoine", "Martinez", "Dupont", "Leclerc", "Dufresne", "Roche", "Guillaume", "Robert", "Allard", "Boucher"};
         String[] firstNames = {"François", "Brigitte", "Luc", "Isabelle", "Michel", "Pierre", "Caroline", "Jean", "Thomas", "Julie"};
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             String lastName = lastNames[rand.nextInt(lastNames.length)];
             String firstName = firstNames[rand.nextInt(firstNames.length)];
             String email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@univ.fr";

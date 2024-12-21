@@ -1,1 +1,1 @@
-GET localhost:9090/api/hello
+GET localhost:8080/api/members?type=teacher
