@@ -32,9 +32,9 @@ jobs:
       # 5. Construire l'image Docker
       - name: Build Docker image
         run: |
-          docker build -t acr1zbr89sm.azurecr.io/api:1.0.0 .
+          docker build -t acrb68gbned.azurecr.io/api:1.0.0 .
 
       # 6. Pousser l'image vers ACR
       - name: Push Docker image to ACR
         run: |
-          docker push acr1zbr89sm.azurecr.io/api:1.0.0
+          docker push acrb68gbned.azurecr.io/api:1.0.0
