@@ -27,7 +27,7 @@ jobs:
       # 4. Authentification à Azure Container Registry (ACR)
       - name: Log in to ACR
         run: |
-          az acr login --name acr1zbr89sm
+          az acr login --name acrb68gbned
 
       # 5. Construire l'image Docker
       - name: Build Docker image
