@@ -7,7 +7,7 @@ module "module_1" {
 }
 
 resource "random_id" "web_app_suffix" {
-  byte_length = 4
+  byte_length = 6
 }
 
 resource "azurerm_linux_web_app" "web_app" {
@@ -19,9 +19,8 @@ resource "azurerm_linux_web_app" "web_app" {
   site_config {
     application_stack {
       docker_image_name = "api:1.0.0"
-      docker_registry_url = "https://${module.module_1.random_names.acr_name}.azurecr.io"
+      docker_registry_url = "https://acr${module.module_1.random_names.acr_name}.azurecr.io"
     }
-    always_on = false
   }
 
   identity {

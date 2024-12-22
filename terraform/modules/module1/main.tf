@@ -4,21 +4,21 @@ provider "azurerm" {
 
 # Générer un nom aléatoire pour le Resource Group
 resource "random_string" "rg_name" {
-  length  = 8
+  length  = 12
   special = false
   upper   = false
 }
 
 # Générer un nom aléatoire pour l'App Service Plan
 resource "random_string" "app_service_plan_name" {
-  length  = 8
+  length  = 12
   special = false
   upper   = false
 }
 
 # Générer un nom aléatoire pour le Container Registry
 resource "random_string" "acr_name" {
-  length  = 8
+  length  = 12
   special = false
   upper   = false
 }
@@ -35,7 +35,7 @@ resource "azurerm_service_plan" "app_service_plan" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   os_type             = "Linux"        # Ajouté (obligatoire)
-  sku_name            = "F1"           # Ajouté (obligatoire, gratuit)
+  sku_name            = "S1"           # Ajouté (obligatoire, gratuit)
 }
 
 # Container Registry (Standard - Minimum requis)
