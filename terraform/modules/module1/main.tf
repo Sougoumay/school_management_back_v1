@@ -34,8 +34,8 @@ resource "azurerm_service_plan" "app_service_plan" {
   name                = "asp-${random_string.app_service_plan_name.result}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  os_type             = "Linux"        # Ajouté (obligatoire)
-  sku_name            = "S1"           # Ajouté (obligatoire, gratuit)
+  os_type             = "Linux"
+  sku_name            = "S1"
 }
 
 # Container Registry (Standard - Minimum requis)
