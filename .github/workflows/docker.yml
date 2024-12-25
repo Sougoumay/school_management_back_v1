@@ -27,14 +27,14 @@ jobs:
       # 4. Authentification à Azure Container Registry (ACR)
       - name: Log in to ACR
         run: |
-          az acr login --name xxxxxxxxxx
+          az acr login --name acr9irmdq1iqemt
 
       # 5. Construire l'image Docker
       - name: Build Docker image
         run: |
-          docker build -t xxxxxxxxxxxx.azurecr.io/api:1.0.0 .
+          docker build -t acr9irmdq1iqemt.azurecr.io/api:1.0.0 .
 
       # 6. Pousser l'image vers ACR
       - name: Push Docker image to ACR
         run: |
-          docker push xxxxxxxxxxx.azurecr.io/api:1.0.0
+          docker push acr9irmdq1iqemt.azurecr.io/api:1.0.0
