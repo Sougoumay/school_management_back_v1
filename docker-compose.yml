@@ -7,3 +7,6 @@ services:
     image: api:1.0.0
     ports:
       - "8080:8080"  # Map le port 8080 de l'hôte vers le port 8080 du conteneur
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
