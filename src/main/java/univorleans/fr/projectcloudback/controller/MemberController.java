@@ -11,27 +11,24 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*")
 public class MemberController {
 
     private List<Member> students = new ArrayList<>();
     private List<Member> teachers = new ArrayList<>();
     private HashMap<String, List<Member>> membersMap = new HashMap<>();
-
-    //@GetMapping("/hello")
-    //public String hello() {
-    //    return "Hello World";
-    //}
+    private boolean firstCall = true;
 
     @GetMapping("/members")
     public ResponseEntity<List<?>> getMembers(@RequestParam String type) {
 
-        students.clear();
-        teachers.clear();
-        students.addAll(generateStudents());
-        teachers.addAll(generateTeachers());
-        membersMap.put("student", students);
-        membersMap.put("teacher", teachers);
+
+        if (firstCall) {
+            students.addAll(generateStudents());
+            teachers.addAll(generateTeachers());
+            membersMap.put("student", students);
+            membersMap.put("teacher", teachers);
+            firstCall = false;
+        }
 
         if (type == null || type.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
