@@ -15,6 +15,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("*")
 public class MemberController {
 
     private List<Member> students = new ArrayList<>();
